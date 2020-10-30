@@ -1,0 +1,175 @@
+{% extends 'back/master.html' %}
+{% load static %}
+{%block head%}<title>| ArtAdmin</title>{% endblock%}
+{%block container%}
+ <div class="row">
+   <div class="col-12">
+      <!-- Content Wrapper. Contains page content -->
+  <div class="content">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Article Manage</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Article</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <!-- ./card-body -->
+          <div class="card-footer">
+            <div class="row">
+             
+              <div class="col-sm col">
+                <div class="description-block border-right">
+                  
+                  <h5 class="description-header">{{md.ecount}} View</h5>
+                  <span class="description-text">Examan</span>
+                  <p class="description-text">
+                    <small>{{module.filier}}</small>
+                  </p>
+                </div>
+                <!-- /.description-block -->
+              </div>
+              <div class="col-sm col">
+                <div class="description-block border-right">
+                  
+                  <h5 class="description-header">{{md.tpcount}} View</h5>
+                  <span class="description-text">Traveux Pratique</span>
+                  <p class="description-text">
+                    <small>{{module.filier}}</small>
+                  </p>
+                </div>
+                <!-- /.description-block -->
+              </div>
+              <div class="col-sm col">
+                <div class="description-block border-right">
+                  
+                  <h5 class="description-header">{{md.Tdcount}} files</h5>
+                  <span class="description-text">Traveux Dirigés</span>
+                  <p class="description-text">
+                    <small>{{module.filier}}</small>
+                  </p>
+                </div>
+                <!-- /.description-block -->
+              </div>
+              <div class="col-sm col">
+                <div class="description-block border-right">
+                  
+                  <h5 class="description-header">{{md.ccount}} View</h5>
+                  <span class="description-text">Coures</span>
+                  <p class="description-text">
+                    <small>{{module.filier}}</small>
+                  </p>
+                </div>
+                <!-- /.description-block -->
+              </div>
+    
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!--Message-->
+    {% for message in messages %}
+<div class="row">
+  <div class="col-12">
+    <br>
+    {% if message.tags == "success"%}
+    <div class="alert alert-{{message.tags }} alert-dismissible fade show" role="alert">
+      {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {%endif%}
+    {% if message.tags == "error"%}
+    <div class="alert alert-{{message.tags }} alert-dismissible fade show" role="alert">
+      {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {%endif%}
+    {% if message.tags == "warning"%}
+    <div class="alert alert-{{message.tags }} alert-dismissible fade show" role="alert">
+      {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {%endif%}
+    {% if message.tags == "info"%}
+    <div class="alert alert-{{message.tags }} alert-dismissible fade show" role="alert">
+      {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {%endif%}
+  </div>
+  <!-- /.col -->
+</div>
+{%endfor%}
+    <!--/message-->
+    <!-- Main content -->
+    <section class="content">
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Coure Manage</h2>
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+              <i class="fas fa-minus"></i> </button>
+            <button type="button" class="btn btn-tool"  ><a href="{% url 'ArticleAdd'%}">Add</a></button>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-striped projects">
+              <thead>
+                  <tr>
+                      <th style="width: 4%"> #</th>
+                      <th > Name</th>
+                      <th style="width: 20%"></th>
+                  </tr>
+              </thead>
+              {% for article in Articles %}
+              <tbody>
+                  <tr>
+                      <td>#</td>
+                      <td>
+                        <a>{{article.name}} <i class="fas fa-folder"></i></a><br/><small>Created {{article.date}}</small><br/><small>Art ID :{{article.artID}}</small>
+                      </td>
+                      
+                      <td class="project-actions text-center">
+                          <a class="btn btn-danger btn-sm" href="{% url 'ArtPanelDetail' _Artid=article.artID %}" ><i class="fas fa-trash"></i> Entre </a>
+                        </tbody>
+                      </td>
+                  </tr>
+              {%endfor%}
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+     
+      <!-- /.modal -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+   </div>
+ </div>
+{%endblock%}
