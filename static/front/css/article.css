@@ -583,11 +583,11 @@ img {
 }
 
 .course-item {
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 .course-item .course-thumb {
-    margin-bottom: 45px;
+    margin-bottom: 15px;
     position: relative;
 }
 
@@ -624,9 +624,9 @@ img {
 }
 
 .course-item .course-info .date {
-    color: #f6783a;
+    color: #020202;
     font-size: 14px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
 }
 
 .course-item .course-info h4 {

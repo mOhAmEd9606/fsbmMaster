@@ -4,6 +4,7 @@ from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.models import User, Group, Permission
 from .models import *
 from article.models import *
+from book.models import *
 from django.contrib.auth.decorators import login_required
 import datetime
 from itertools import chain
@@ -342,6 +343,7 @@ def PhysiquePage(request):
     filiern= Filier.objects.get(name="Physique").name
     print(fil)
     context = {
+        'Books': Books.objects.all(),
         'Filiernavebar': Filier.objects.all().order_by('pk'),
         'Filiers': Filier.objects.filter(name=filiern),
         'Module': Module.objects.all(),

@@ -1,0 +1,115 @@
+{% extends 'back/master.html' %}
+{% load static %}
+{%block head%}<title> |BooksAdmin </title>{% endblock%}
+{%block container%}
+<!--messages-->
+{% for message in messages %}
+<div class="row">
+  <div class="col-12">
+    <br>
+    {% if message.tags == "success"%}
+    <div class="alert alert-{{message.tags }} alert-dismissible fade show" role="alert">
+      {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {%endif%}
+    {% if message.tags == "error"%}
+    <div class="alert alert-{{message.tags }} alert-dismissible fade show" role="alert">
+      {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {%endif%}
+    {% if message.tags == "warning"%}
+    <div class="alert alert-{{message.tags }} alert-dismissible fade show" role="alert">
+      {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {%endif%}
+    {% if message.tags == "info"%}
+    <div class="alert alert-{{message.tags }} alert-dismissible fade show" role="alert">
+      {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {%endif%}
+  </div>
+  <!-- /.col -->
+</div>
+{%endfor%}
+<!--/messages-->
+<div class="row">
+  <div class="col-12">
+
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Filier List</h3>
+        <div class="card-tools text-right">
+          <button type="button" class="btn btn-warning btn-sm" >
+            <a href="{% url 'booksBackadd' %}"><i class="fas fa-plus"></i> Add</a>
+          </button>
+        </div>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th> image</th>
+            <th>title</th>
+            <th>price</th>
+             <th>Views</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+         {% for f in Books %}
+          <tr>
+            <td class="text-center">
+              <img style="max-width: 40px;max-height: 40px;" src="{{f.pic.url}}" alt="img" >
+            </td>
+            <td class="text-center">{{f.title}}</td>
+             <td class="text-center">$ {{f.price}} </td>
+             <td class="text-center">{{f.show}} View</td>
+            <td class="project-actions text-center ">
+              <a class="btn btn-danger btn-sm" href="{% url 'delete_filier' f.pk%}">
+                  <i class="fas fa-trash"></i>
+              </a>
+          </td>
+          </tr>
+          {% endfor %}
+          </tbody>
+         
+        </table>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+      <!-- /.modal -->
+  </div>
+  <!-- /.col -->
+</div>
+
+
+{%endblock%}
+{%block script%}
+
+{%endblock%}
+
+
+
+<tfoot>
+  <tr>
+    <th>Rendering engine</th>
+    <th>Browser</th>
+    <th>Platform(s)</th>
+    <th>Engine version</th>
+    <th>CSS grade</th>
+  </tr>
+  </tfoot>

@@ -48,11 +48,14 @@
             <div class="card-header">
                 <h3 class="card-title">Catagury List</h3>
                 <div class="card-tools text-right">
-                  <button type="button" class="btn btn-warning btn-sm" >
-                    <a href="/Panel/coure:add/" data-toggle="modal" data-target="#Cat" ><i class="fas fa-plus"></i> Add Tags</a>
+                  <button type="button" class="btn btn-danger btn-sm" >
+                    <a href="{% url 'ArtDel' d_Id%}"  style="color: aliceblue;" ><i class="fas fa-trsh"></i> Delete</a>
                   </button>
                   <button type="button" class="btn btn-warning btn-sm" >
-                    <a href="/Panel/coure:add/" data-toggle="modal" data-target="#Cat" ><i class="fas fa-plus"></i> Add Link</a>
+                    <a href="#" data-toggle="modal" data-target="#tags" ><i class="fas fa-plus"></i> Add Tags</a>
+                  </button>
+                  <button type="button" class="btn btn-warning btn-sm" >
+                    <a href="{% url 'AddLink' %}"  ><i class="fas fa-plus"></i> Add Link</a>
                   </button>
                 </div>
               </div>
@@ -60,11 +63,11 @@
     </div>
    
     <!---Forms Add -->
-    <div class="modal fade" id="Cat">
+    <div class="modal fade" id="tags">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Add Cat</h4>
+              <h4 class="modal-title">Add Tags</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -76,9 +79,8 @@
                   {% csrf_token %}
                   <div class="form-group">
                     <label for="inputName"> Name</label>
-                    {{form.name}}
+                    {{formTags.name}}
                   </div>
-                 
                  <div class="text-right">
                   <button class="btn btn-primary " type="submit" >Save</button>
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -93,6 +95,43 @@
         <!-- /.modal-dialog -->
       </div>
     <!---/Forms-->
+     <!---Forms Add -->
+     <div class="modal fade" id="link">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Add Link</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="" method="post" enctype="multipart/form-data" >
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="inputName"> Name</label>
+                  {{formlincks.name}}
+                </div>
+                <div class="form-group">
+                  <label for="inputName"> Link</label>
+                  {{formlincks.link}}
+                </div>
+               <div class="text-right">
+                <button class="btn btn-primary " type="submit" >Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               </div>
+              </form>
+            </div>
+            <!-- /.card -->
+          </div>
+         </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+  <!---/Forms-->
     <!--delete From-->
     
 </div>
@@ -119,12 +158,22 @@
                     <p>
                    {{article.discripton|safe}}
                     </p>
-
+                    {% if Tagsss  != 0  %}
                     <p>
-                    <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i> UAT.pdf</a>
-
-                    <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v2</a>
+                      Tags: <br>
+                    {% for tag in Tags %}
+                    <i class="fas fa-link mr-1"></i>{{tag.name}} <a href="{% url 'TagsDel' tag.pk%}"><i class="fas fa-trash"></i></a>
+                    {%endfor%}
                     </p>
+                    {%endif%}
+                    {% if linksss != 0 %}
+                    <p>
+                      Links: <br>
+                      {% for link in Links %}
+                      <i class="fas fa-link mr-1"></i>{{link.name}} <a href="{% url 'LinksDel' link.pk%}"><i class="fas fa-trash"></i></a>
+                      {%endfor%}
+                      </p>
+                      {%endif%}
                 </div>
                 {%endfor%}
             </div>

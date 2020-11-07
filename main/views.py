@@ -13,9 +13,18 @@ from article.models import *
 from .forms import  *
 from etudiant.models import *
 from .models import *
+from book.models import *
 
 def home(request):
+    filierCont = len(Filier.objects.all())
+    articleCont = len(Article.objects.all())
+    booksCont = len(Books.objects.all())
     context = {
+        'booksCont':booksCont,
+        'filierCont':filierCont,
+        'articleCont':articleCont,
+        'lastcoureCont':len(Cours.objects.all()),
+        'Books': Books.objects.all(),
         'Filiernavebar': Filier.objects.all().order_by('pk'),
         'Article': Article.objects.all().order_by('pk'),
         'Cat': Cat.objects.all().order_by('pk'),
@@ -73,42 +82,41 @@ def registerPage(request):
 				form.save()
 				user = form.cleaned_data.get('username')
 				messages.success(request, 'Account was created for '+ user)
-
 				return redirect('loginPage')
-
-
 		context = {
             'form':form
             }
 		return render(request, 'logIn/logUp.html', context)
-
-
 def logoutUser(request):
 	logout(request)
 	return redirect('loginPage')
+def password_change(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            mes = ('Password Has Change')
+            messages.success(request, mes)
+            return redirect('logout')
+    else:
+        mes = ('Password Has Not Change')
+        messages.info(request, mes)
+        return redirect('logout')
+    context = {'form':form}
+    return render(request,'logIn/changepassword.html',context)
 def news_letter(request) :
-
-
     if request.method == 'POST' :
-
         txt = request.POST.get('txt')
-
         res = txt.find('@')
-
         if int(res) != -1 :
             b = Newsletter(txt=txt,status=1)
             b.save()
         else:
-
             try:
-
                 int(txt)
                 b = Newsletter(txt=txt,status=2)
                 b.save()
-
             except:
-
                 return redirect('home')
-
-
     return redirect('home')

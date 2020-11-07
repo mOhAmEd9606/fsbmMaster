@@ -99,10 +99,12 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <li class="nav-header">Article</li>
+                        <!-- <li class="nav-header">Article</li> -->
+
                         <li class="nav-item has-treeview">
                           <a href="#" class="nav-link">
-                            <i class="nav-icon fas text-primary fa-chart-pie"></i>
+                            <i class="nav-icon  fas fa-newspaper text-primary"></i>
+                            <!-- <i class="nav-icon fas text-primary fa-chart-pie"></i> -->
                             <p>
                               Articles
                               <i class="right fas fa-angle-left"></i>
@@ -112,10 +114,37 @@
                             <li class="nav-item">
                               <a href="{% url 'CatManager'%}" class="nav-link">
                                 <i class="nav-icon far fa-circle  text-primary"></i>
-                                <p>Cat Manage</p>
+                                <p>Catagury</p>
                               </a>
                             </li>
+                            <li class="nav-item has-treeview">
+                              <a href="#" class="nav-link">
+                                <i class="nav-icon far fa-circle  text-primary"></i>
+                                <p>Tags</p>
+
+                              </a>
+                              <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                  <a href="{% url 'tagsAdd'%}" class="nav-link">
+                                    <i class="nav-icon far fa-circle  text-primary"></i>
+                                    <p>Add</p>
+                                  </a>
+                                </li>
+                                <li class="nav-item">
+                                  <a href="{% url 'tags'%}" class="nav-link">
+                                    <i class="nav-icon far fa-circle  text-primary"></i>
+                                    <p>List</p>
+                                  </a>
+                                </li>
+                              </ul>
+                            </li>
                             <li class="nav-item">
+                              <a href="{% url 'ArticleManager' %}" class="nav-link">
+                                <i class="nav-icon far fa-circle  text-primary"></i>
+                                <p>Art Manage</p>
+                              </a>
+                            </li>
+                            <!-- <li class="nav-item">
                               <a href="#" class="nav-link">
                                 <i class="nav-icon far fa-circle fa-angle-left text-primary"></i>
                                 <p>Cat List</p>
@@ -131,14 +160,36 @@
                                   </li>
                                   {%endfor%}
                               </ul>
+                            </li> -->
+                          </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                          <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-book  text-primary"></i>
+                            <!-- <i class="nav-icon far fa-circle  text-primary"></i> -->
+                            <p>Books</p>
+                            <i class="right fas fa-angle-left"></i>
+                          </a>
+                          <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                              <a href="{% url 'booksBackadd'%}" class="nav-link">
+                                <i class="nav-icon far fa-circle  text-primary"></i>
+                                <p>Add</p>
+                              </a>
+                            </li>
+                            <li class="nav-item">
+                              <a href="{% url 'booksBackList'%}" class="nav-link">
+                                <i class="nav-icon far fa-circle  text-primary"></i>
+                                <p>List</p>
+                              </a>
                             </li>
                           </ul>
                         </li>
-                       
                         <li class="nav-header">ETUDIANT</li>
                         <li class="nav-item">
                           <a href="{% url 'filier'%}" class="nav-link">
-                            <i class="nav-icon fas text-danger fa-chart-pie"></i>
+                            <i class="nav-icon fas fa-user-graduate text-danger"></i>
+                            <!-- <i class="nav-icon fas text-danger fa-chart-pie"></i> -->
                             <p>Filier Manage</p>
                           </a>
                         </li>

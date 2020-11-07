@@ -28,52 +28,19 @@
           <!-- ./card-body -->
           <div class="card-footer">
             <div class="row">
-             
+              {% for cat in Cats%}
               <div class="col-sm col">
                 <div class="description-block border-right">
                   
-                  <h5 class="description-header">{{md.ecount}} View</h5>
-                  <span class="description-text">Examan</span>
+                  <h5 class="description-header">{{cat.count}} Art</h5>
+                  <span class="description-text">{{cat.name}}</span>
                   <p class="description-text">
-                    <small>{{module.filier}}</small>
+                    <small>{{cat.show}} Views</small>
                   </p>
                 </div>
                 <!-- /.description-block -->
               </div>
-              <div class="col-sm col">
-                <div class="description-block border-right">
-                  
-                  <h5 class="description-header">{{md.tpcount}} View</h5>
-                  <span class="description-text">Traveux Pratique</span>
-                  <p class="description-text">
-                    <small>{{module.filier}}</small>
-                  </p>
-                </div>
-                <!-- /.description-block -->
-              </div>
-              <div class="col-sm col">
-                <div class="description-block border-right">
-                  
-                  <h5 class="description-header">{{md.Tdcount}} files</h5>
-                  <span class="description-text">Traveux Dirigés</span>
-                  <p class="description-text">
-                    <small>{{module.filier}}</small>
-                  </p>
-                </div>
-                <!-- /.description-block -->
-              </div>
-              <div class="col-sm col">
-                <div class="description-block border-right">
-                  
-                  <h5 class="description-header">{{md.ccount}} View</h5>
-                  <span class="description-text">Coures</span>
-                  <p class="description-text">
-                    <small>{{module.filier}}</small>
-                  </p>
-                </div>
-                <!-- /.description-block -->
-              </div>
-    
+              {%endfor%}
             </div>
             <!-- /.row -->
           </div>
@@ -155,7 +122,7 @@
                       </td>
                       
                       <td class="project-actions text-center">
-                          <a class="btn btn-danger btn-sm" href="{% url 'ArtPanelDetail' _Artid=article.artID %}" ><i class="fas fa-trash"></i> Entre </a>
+                          <a class="btn btn-danger btn-sm" href="{% url 'ArtPanelDetail' ARTID=article.artID %}" > <i class="fas fa-folder"></i>Entre </a>
                         </tbody>
                       </td>
                   </tr>

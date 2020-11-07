@@ -1,0 +1,53 @@
+{% extends 'back/master.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{%block head%}<title>| Add Link</title>{% endblock%}
+{%block container%}
+ <div class="row">
+   <div class="col-12">
+      <!-- Content Wrapper. Contains page content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                  <!-- left column -->
+                  <div class="col-md-12">
+                    <!-- jquery validation -->
+                    <div>
+                     
+                      <!-- /.card-header -->
+                      <!-- form start -->
+                      
+
+                        <style type="text/css">
+                            #div_id_tags > div{
+                                max-height: 100px;
+                                overflow-y: scroll;
+                                border:1px solid #888;
+                                padding: 45px;
+                                border-radius: 5px;
+                            }
+                        </style>
+                      <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{formlincks.media}}
+                        {{formlincks|crispy}}
+                        <input class="btn btn-primary" type="submit" value="Submit Post">
+                        
+                    </form>
+                    </div>
+                    <!-- /.card -->
+                    </div>
+                  <!--/.col (left) -->
+                  <!-- right column -->
+                  <div class="col-md-6">
+        
+                  </div>
+                  <!--/.col (right) -->
+                </div>
+                <!-- /.row -->
+              </div><!-- /.container-fluid -->
+        </div>
+      <!-- /.content-wrapper -->
+   </div>
+ </div>
+{%endblock%}

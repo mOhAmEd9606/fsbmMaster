@@ -7,6 +7,9 @@
     <div class="col-12">
         <div class="callout callout-danger">
             <h5><i class="fas fa-check"></i> Are you sure you want to delete "{{item}}"?</h5>
+            {% if orderLink %}
+            <h6>and Link : {% for orr in orderLink%} {{orr.name}},{%endfor%}</h6>
+            {%endif%}
 			<form action="{% url 'ArtDel' item.id  %}" method="POST">
 				{% csrf_token %}
 				<a class="btn btn-warning" href="{% url 'ArticleManager' %}">Cancel</a>

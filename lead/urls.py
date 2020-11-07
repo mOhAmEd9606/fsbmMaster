@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'' ,include('etudiant.urls')),
     url(r'' ,include('article.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'' ,include('book.urls')),
 
 ]
 

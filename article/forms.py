@@ -8,7 +8,10 @@ from .models import *
 class ArticleForm(ModelForm):
 	class Meta:
 		model = Article
-		fields = ['name','cat','writer','discripton','artbody','pic']
+		fields = ['name','cat','writer','discripton','artbody','tags','pic']
+		widgets = {
+			'tags':forms.CheckboxSelectMultiple(),
+		}
 		
 
 class CatForm(ModelForm):
@@ -18,8 +21,8 @@ class CatForm(ModelForm):
 class lincksForm(ModelForm):
 	class Meta:
 		model = Links
-		fields = ['name','link','Artname']
+		fields = ['name','artname','link']
 class TagsForm(ModelForm):
 	class Meta:
 		model = Tags
-		fields = ['name','Artname']
+		fields = ['name']

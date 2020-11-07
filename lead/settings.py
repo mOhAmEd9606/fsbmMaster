@@ -14,7 +14,7 @@ SECRET_KEY = 'cbk@7-bt+u774yvr&kn%@c)kn15hrr_zx^!^qrqp+%p-$ohc(0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['fsbm.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['fsbmcours.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -31,10 +31,10 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'article',
     'ckeditor',
-     'ckeditor_uploader',
-     'crispy_forms',
-    
-]
+    'ckeditor_uploader',
+    'crispy_forms',
+    'book',
+    ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
